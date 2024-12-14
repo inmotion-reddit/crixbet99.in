@@ -601,59 +601,26 @@ items.forEach((item) => item.addEventListener('click', toggleAccordion));
 </script>
 
 
-<script type="text/javascript">
+<script>
+  function checkLogin() {
+    // Get the values from the form inputs
+    var loginName = document.getElementById("loginName").value;
+    var password = document.getElementById("password").value;
 
-	function checkLogin(){
-		 var loginName = $("#loginName").val();
-		 var password = $("#password").val();
-		 if(loginName !='' && password !=''){
-			sessionStorage.setItem("loginName", loginName);
-			sessionStorage.setItem("password", password);
-			window.location.href = "./withdrawal.html";
-		 }else{
-		   alert('All fields are required.');
-		   return false;
-		 }
-	   }
-	   
-	   document.onkeydown = function(e) {
-        if (e.ctrlKey && 
-            (e.keyCode === 67 || 
-             e.keyCode === 86 || 
-             e.keyCode === 85 || 
-             e.keyCode === 117)) {
-            //alert('not allowed');
-            return false;
-        } else {
-            return true;
-        }	
-		};
-		
-		document.onkeydown = function(e) {
-    if(e.keyCode == 123) {
-     return false;
-    }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
-     return false;
-    }
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
-     return false;
-    }
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
-     return false;
+    // Validate the inputs
+    if (!loginName || !password) {
+      alert("Please fill in both the username and password.");
+      return;
     }
 
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
-     return false;
-    }      
- }
+    // Store login credentials in sessionStorage
+    sessionStorage.setItem("loginName", loginName);
+    sessionStorage.setItem("password", password);
 
-		$(function() {
-			$(this).bind("contextmenu", function(e) {
-				e.preventDefault();
-			});
-		}); 
-	</script>
+    // Redirect to the withdrawal page
+    window.location.href = "withdrawal.html";
+  }
+</script>
 	
 	
 	 
